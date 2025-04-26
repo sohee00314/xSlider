@@ -23,12 +23,24 @@
 
             // 클릭 이벤트 추가
             mn.addEventListener("click",function(){
-                
+                move();
             });
             ma.addEventListener("click",function(){
 
             });
         });
+        // 움직임 추가
+        let n =0; // 위치를 변화시킬 전역변수를 추가
+        function move(){
+            let box = document.getElementById("box");
+            let xp = parseInt(box.style.left)||0; // box의 left위치를 0으로 함
+            if(xp<0||xp>=300){
+                n--
+            }else{
+                n++
+            }
+            box.style.left = xp + n + "px";
+        }
     </script>
 </head>
 <body>
