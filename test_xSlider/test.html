@@ -32,10 +32,10 @@
                 if(flag){
                     autoMove();
                     ma.textContent = "Move_stop";
-                    mn.disabled = true;
+                    mn.disabled = true; // Move_stop 활성화 상태 시 Move_next 비활성화
                 }else{
                     ma.textContent = "Move_auto";
-                    mn.disabled = false;
+                    mn.disabled = false; // Move_auto 활성화 시 Move_next도 같이 활성화
                 }
             });
         });
