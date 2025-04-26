@@ -32,8 +32,10 @@
                 if(flag){
                     autoMove();
                     ma.textContent = "Move_stop";
+                    mn.disabled = true;
                 }else{
                     ma.textContent = "Move_auto";
+                    mn.disabled = false;
                 }
             });
         });
