@@ -44,10 +44,11 @@
             let box = document.getElementById("box");
             let xp = parseInt(box.style.left)||0; // box의 left위치를 0으로 함
             if(xp<0||xp>=300){
-                n--
+                n-=2;
             }else{
-                n++
+                n+=2;
             }
+            // 감속 이동
             box.style.left = xp + n + "px";
         }
         function autoMove(){
