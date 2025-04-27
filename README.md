@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # XSlider
 
 **개발자:** sohee00314  

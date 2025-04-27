@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSlider_test</title>
+    <style>
+        #box{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: blue;
+            position: absolute;
+            left: 0px;
+            top: 150px;
+        }
+    </style>
+    <script>
+        let n =0; // 위치를 변화시킬 전역변수를 추가
+        let flag = false;
+        // load 설정
+        addEventListener("load",function(){
+            let mn = document.getElementById("mn");
+            let ma = document.getElementById("ma");
+            
+            // 클릭 이벤트 추가
+            mn.addEventListener("click",function(){
+                move();
+            });
+            ma.addEventListener("click",function(){
+                flag = !flag
+                if(flag){
+                    autoMove();
+                    ma.textContent = "Move_stop";
+                    mn.disabled = true; // Move_stop 활성화 상태 시 Move_next 비활성화
+                }else{
+                    ma.textContent = "Move_auto";
+                    mn.disabled = false; // Move_auto 활성화 시 Move_next도 같이 활성화
+                }
+            });
+        });
+        // 움직임 추가
+        function move(){
+            let box = document.getElementById("box");
+            let xp = parseInt(box.style.left)||0; // box의 left위치를 0으로 함
+            if(xp<0||xp>=300){
+                n-=2;
+            }else{
+                n+=2;
+            }
+            // 감속 이동
+            box.style.left = xp + n + "px";
+        }
+        function autoMove(){
+            if(!flag) return;  // flag = false 일 때 return
+                move();        // flage = true 일 때 move() 실행
+                setTimeout(autoMove,50);
+        }
+        </script>
+</head>
+<body>
+    <button id="mn">Move_next</button>
+    <button id="ma">Move_auto</button>
+    <div id="box"></div>
+</body>
+</html>
